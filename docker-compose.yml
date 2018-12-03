@@ -37,6 +37,13 @@ services:
       - VIRTUAL_HOST=${BASEHOST:-pimcore.docker},${EXTRAHOSTS}
     volumes:
       - ${APPLICATION:-../pimcore}:/phpapp
+    ports:
+      - "80:80"
     links:
       - application
+
+  pdfreactor:
+    image: realobjects/pdfreactor
+    environment:
+      - DOMAIN_NAME=pdfreactor.${BASEHOST:-pimcore.docker}
 
